@@ -1,21 +1,6 @@
 <div class="container">
     <h1>Ultimas notias</h1>
-    <div class="row">
-        <div class="d-flex justify-content-center mb-1">
-            <!-- (page)="handlePageEvent($event)" -->
-            <mat-paginator #paginator
-                class="demo-paginator"
-                [length]="length"
-                [pageSize]="pageSize"
-                [disabled]="disabled"
-                [showFirstLastButtons]="showFirstLastButtons"
-                [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
-                [hidePageSize]="hidePageSize"
-                [pageIndex]="pageIndex"
-                aria-label="Select page">
-            </mat-paginator>
-        </div>
-    </div>
+    
     <div class="row">
     @for (article of articleList; track article.id) {
             <div class="col-md-6 col-sm-12">
@@ -32,12 +17,29 @@
                         </p>
                     </mat-card-content>
                     <mat-card-actions>
-                        <button mat-button (click)="editArticle(article)">Editar</button>
+                        <button mat-button class="btn btn-secoundary" (click)="editArticle(article)">Editar</button>
                     </mat-card-actions>
                 </mat-card>
             </div>
         } @empty {
             No se encontraron noticias
         }
+    </div>
+
+    <div class="row">
+        <div class="d-flex justify-content-center mb-1">
+            <!-- (page)="handlePageEvent($event)" -->
+            <mat-paginator #paginator
+                class="demo-paginator"
+                [length]="length"
+                [pageSize]="pageSize"
+                [disabled]="disabled"
+                [showFirstLastButtons]="showFirstLastButtons"
+                [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+                [hidePageSize]="hidePageSize"
+                [pageIndex]="pageIndex"
+                aria-label="Select page">
+            </mat-paginator>
+        </div>
     </div>
 </div>
