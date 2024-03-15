@@ -16,3 +16,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border: 1px red solid;
 }
 
+.mr-1 {
+    margin-right: 1rem !important;
+}
+
+.mr-2 {
+    margin-right: 2rem !important;
+}
+

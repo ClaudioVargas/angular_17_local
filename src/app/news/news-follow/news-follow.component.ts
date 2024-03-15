@@ -34,14 +34,15 @@ export class NewsFollowComponent {
     ) { }
 
   ngOnInit(): void {
+    this.getArticles()
+  }
+
+  getArticles(){
     let response = this._articleServices.getNewsByUser()
 
     if(response){
       this.articleList = JSON.parse(response)
-      console.log("this.articleList", this.articleList)
     }
-    console.log("response", response) 
-    console.log("this.articleList", this.articleList) 
   }
 
   // getRespose(response: any){
@@ -79,10 +80,19 @@ export class NewsFollowComponent {
   }
 
   editArticle(article: ArticleResponse) {
-    const modalRef = this.dialog.open(NewsModalComponent, {
+    const dialogRef = this.dialog.open(NewsModalComponent, {
       width: '50%',
-      height: '60%',
+      height: '70%',
       data: article
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.getArticles()
+      } else {
+        alert("no se pudo editar")
+      }
+
     });
   }
 }

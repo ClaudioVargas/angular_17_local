@@ -43,7 +43,6 @@ export class ArticlesService {
     let articleList: Array<ArticleResponse> = []
 
     try {
-      debugger
       if(articleListLocal) {
         articleList = JSON.parse(articleListLocal) as Array<ArticleResponse>
         articleList.push(article)
@@ -56,6 +55,34 @@ export class ArticlesService {
       }
     } catch (error) {
       console.log("Error al guardar article", error)
+      return false
+    }
+  }
+
+  updateUserNews(id: number, title: string, news_site: string, summary: string): boolean {
+    debugger
+    let articleListLocal = localStorage.getItem(this.articleLocal)
+    console.log("articleListLocal", articleListLocal)
+    let articleList: Array<ArticleResponse> = []
+
+    try {
+      if(articleListLocal) {
+        articleList = JSON.parse(articleListLocal) as Array<ArticleResponse>
+        console.log("articleList******", articleList)
+
+        let index = articleList.findIndex(x => x.id === id)
+        console.log("articleList[index]******", articleList[index])
+
+        articleList[index].title = title
+        articleList[index].news_site = news_site
+        articleList[index].summary = summary
+
+        localStorage.setItem(this.articleLocal, JSON.stringify(articleList))
+        return true
+      }
+      return false
+    } catch (error) {
+      console.log("Error al editar article", error)
       return false
     }
   }
