@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../../services/articles.service';
 import { ArticleDto } from '../../models/article.dto';
 import { PageEvent } from '@angular/material/paginator';
-import { ArticleRequest } from '../../models/news.request';
+import { ArticleResponse } from '../../models/article.response';
 
 @Component({
   selector: 'app-last-news',
@@ -69,25 +69,16 @@ export class LastNewsComponent implements OnInit  {
     }
   }
 
-  like(article: ArticleDto){
+  like(article: ArticleResponse){
     console.log("article", article)
 
-    let articleRequest = {
-      id: article.id,
-      title: article.title,
-      subTitle: article.news_site,
-      description: article.summary,
-      urlImage: article.image_url,
-      publishedAt: new Date(),
-      updatedAt: new Date(),
-      active: true
-    } as ArticleRequest
+    let status = this._articleServices.saveUserNews(article)
+    if(status){
+      alert("guardado correctamente")
+    }else {
 
-    console.log("articleDto", articleRequest)
-    this._articleServices.saveUserNews(1, articleRequest).subscribe({
-      next: this.getSaveRespose.bind(this),
-      error: this.getErrorResponse.bind(this)
-    })
+      alert("No se pudo guardar la noticia")
+    }
   }
 
   getSaveRespose(response: any){

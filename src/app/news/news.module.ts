@@ -6,13 +6,21 @@ import { NewsRoutingModule } from './news-routing.module';
 import { ArticlesService } from '../services/articles.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { NewsModalComponent } from './news-modal/news-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     LastNewsComponent,
-    NewsFollowComponent
+    NewsFollowComponent,
+    NewsModalComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +29,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     //material module
     MatCardModule,
     MatPaginatorModule,
+    MatDialogModule,    
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [
     ArticlesService

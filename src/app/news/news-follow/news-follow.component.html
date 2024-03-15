@@ -2,9 +2,9 @@
     <h1>Ultimas notias</h1>
     <div class="row">
         <div class="d-flex justify-content-center mb-1">
+            <!-- (page)="handlePageEvent($event)" -->
             <mat-paginator #paginator
                 class="demo-paginator"
-                (page)="handlePageEvent($event)"
                 [length]="length"
                 [pageSize]="pageSize"
                 [disabled]="disabled"
@@ -23,17 +23,17 @@
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
                         <mat-card-title>{{article.title}}</mat-card-title>
-                        <mat-card-subtitle>{{article.subTitle}}</mat-card-subtitle>
+                        <mat-card-subtitle>{{article.news_site}}</mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image [src]="article.urlImage" alt="Photo of a Shiba Inu">
+                    <img mat-card-image [src]="article.image_url" alt="Photo of a Shiba Inu">
                     <mat-card-content>
                         <p>
-                            {{article.description}}
+                            {{article.summary}}
                         </p>
                     </mat-card-content>
-                    <!-- <mat-card-actions>
-                        <button mat-button>SHARE</button>
-                    </mat-card-actions> -->
+                    <mat-card-actions>
+                        <button mat-button (click)="editArticle(article)">Editar</button>
+                    </mat-card-actions>
                 </mat-card>
             </div>
         } @empty {
