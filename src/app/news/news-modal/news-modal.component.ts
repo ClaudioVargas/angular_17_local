@@ -23,7 +23,6 @@ export class NewsModalComponent {
     public dialogRef: MatDialogRef<NewsModalComponent >,
     private formBuilder: FormBuilder,
     private _articleServices: ArticlesService){
-    console.log("data", data)
     this.articleForm.patchValue({
       title: this.data.title,
       news_site: this.data.news_site,
@@ -32,9 +31,6 @@ export class NewsModalComponent {
   }
 
   editArticle() {
-    console.log("title", this.articleForm.controls.title.value)
-    console.log("news_site", this.articleForm.controls.news_site.value)
-    console.log("summary", this.articleForm.controls.summary.value)
     let status = this._articleServices.updateUserNews(
       this.data.id,
       this.articleForm.controls.title.value || "",

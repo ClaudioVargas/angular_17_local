@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewsModalComponent } from './news-modal.component';
+import { TmplAstDeferredBlockError } from '@angular/compiler';
 
 describe('NewsModalComponent', () => {
   let component: NewsModalComponent;
@@ -21,3 +22,6 @@ describe('NewsModalComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+

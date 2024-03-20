@@ -39,7 +39,6 @@ export class ArticlesService {
     // type ArticleLocal = Omit<ArticleResponse, "event" | "featured" | "launches" | "url">;
 
     let articleListLocal = localStorage.getItem(this.articleLocal)
-    console.log("articleListLocal", articleListLocal)
     let articleList: Array<ArticleResponse> = []
 
     try {
@@ -54,7 +53,7 @@ export class ArticlesService {
         return true;
       }
     } catch (error) {
-      console.log("Error al guardar article", error)
+      console.error("Error al guardar article", error)
       return false
     }
   }
@@ -62,16 +61,13 @@ export class ArticlesService {
   updateUserNews(id: number, title: string, news_site: string, summary: string): boolean {
     debugger
     let articleListLocal = localStorage.getItem(this.articleLocal)
-    console.log("articleListLocal", articleListLocal)
     let articleList: Array<ArticleResponse> = []
 
     try {
       if(articleListLocal) {
         articleList = JSON.parse(articleListLocal) as Array<ArticleResponse>
-        console.log("articleList******", articleList)
 
         let index = articleList.findIndex(x => x.id === id)
-        console.log("articleList[index]******", articleList[index])
 
         articleList[index].title = title
         articleList[index].news_site = news_site
@@ -82,7 +78,7 @@ export class ArticlesService {
       }
       return false
     } catch (error) {
-      console.log("Error al editar article", error)
+      console.error("Error al editar article", error)
       return false
     }
   }
@@ -90,7 +86,6 @@ export class ArticlesService {
   getNewsByUser(): string | null {
     try {
       let articleList = localStorage.getItem(this.articleLocal)
-      console.log("articleList", articleList)
       if(articleList) {
         return articleList
       }

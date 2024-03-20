@@ -36,11 +36,9 @@ export class LastNewsComponent implements OnInit  {
   }
 
   getRespose(response: any){
-    console.log("response", response)
     if(response?.results) {
       this.articleList = response.results
       this.length = this.articleList.length
-      console.log("this.articleList", this.articleList)
 
     }
     
@@ -51,7 +49,6 @@ export class LastNewsComponent implements OnInit  {
   }
 
   handlePageEvent(e: PageEvent) {
-    console.log("handlePageEvent", e)
     this.pageEvent = e;
     this.length = e.length;
     this.pageSize = e.pageSize;
@@ -63,14 +60,12 @@ export class LastNewsComponent implements OnInit  {
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
-    console.log("setPageSizeOptions", setPageSizeOptionsInput)
     if (setPageSizeOptionsInput) {
       this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
     }
   }
 
   like(article: ArticleResponse){
-    console.log("article", article)
 
     let status = this._articleServices.saveUserNews(article)
     if(status){
@@ -82,7 +77,6 @@ export class LastNewsComponent implements OnInit  {
   }
 
   getSaveRespose(response: any){
-    console.log("response", response)
     
     
   }

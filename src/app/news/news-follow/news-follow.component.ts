@@ -45,35 +45,7 @@ export class NewsFollowComponent {
     }
   }
 
-  // getRespose(response: any){
-  //   console.log("response", response)
-  //   if(response?.length > 0) {
-  //     this.articleList = response
-  //     this.length = this.articleList.length
-  //     console.log("this.articleList", this.articleList)
-
-  //   }
-    
-  // }
-
-  // getErrorResponse(error: any) {
-  //   console.error(error)
-  // }
-
-  // handlePageEvent(e: PageEvent) {
-  //   console.log("handlePageEvent", e)
-  //   this.pageEvent = e;
-  //   this.length = e.length;
-  //   this.pageSize = e.pageSize;
-  //   this.pageIndex = e.pageIndex;
-  //   this._articleServices.articleGetAll(this.pageSize, this.length).subscribe( {
-  //     next: this.getRespose.bind(this),
-  //     error: this.getErrorResponse.bind(this)
-  //   } )
-  // }
-
   setPageSizeOptions(setPageSizeOptionsInput: string) {
-    console.log("setPageSizeOptions", setPageSizeOptionsInput)
     if (setPageSizeOptionsInput) {
       this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
     }
